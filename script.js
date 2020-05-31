@@ -2,7 +2,7 @@ window.onload = () => {
 
     
 
-    const url = 'http://api.open-notify.org/iss-now.json'
+    const url = 'https://api.wheretheiss.at/v1/satellites/25544'
     
     // Je définis ici l'icône qui représentera l'iss
     var issIcon = L.icon({
@@ -19,17 +19,15 @@ window.onload = () => {
 
 
     getData().then((res)=>{
+        
 
-        let latitude = parseFloat(res.iss_position.latitude)
-        let longitude = parseFloat(res.iss_position.longitude)
-        
-        var map = L.map('issMap').setView([latitude, longitude], 1.5);
-        
+        var map = L.map('issMap').setView([res.latitude, res.longitude], 1.5);
+
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        L.marker([latitude, longitude],{icon:issIcon}).addTo(map)
+        L.marker([res.latitude, res.longitude],{icon:issIcon}).addTo(map)
             
         
     })
