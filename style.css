@@ -1,0 +1,12 @@
+body{
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+}
+
+#issMap{
+    height: 400px;
+}
+
+.footer{
+    font-size: small;
+}
