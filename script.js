@@ -17,10 +17,9 @@ window.onload = () => {
         return response
     }
 
-
+    // Dès que les données sont récupérées on affiche une carte en plaçant l'icône de l'ISS
     getData().then((res)=>{
         
-
         var map = L.map('issMap').setView([res.latitude, res.longitude], 1.5);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
